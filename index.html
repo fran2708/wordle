@@ -5,7 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="/script.js"></script>
-        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/wordle.css"
         <title>Wordle</title>
     </head>
     <body>
@@ -14,49 +15,86 @@
         </header>
 
         <main>
-            <div id="tablero">
-                <fieldset>
-                    <input name="11" class="celda" id="r0c0">
-                    <input name="12" class="celda" id="r0c1">
-                    <input name="13" class="celda" id="r0c2">
-                    <input name="14" class="celda" id="r0c3">
-                    <input name="15" class="celda" id="r0c4">
+            <div id="board">
+                <fieldset id="row0">
+                    <input name="00" maxlength="1" class="celda" id="r0c0">
+                    <input name="01" maxlength="1" class="celda" id="r0c1">
+                    <input name="02" maxlength="1" class="celda" id="r0c2">
+                    <input name="03" maxlength="1" class="celda" id="r0c3">
+                    <input name="04" maxlength="1" class="celda" id="r0c4">
                 </fieldset>
-                <fieldset>
-                    <input name="21" class="celda" id="r1c0">
-                    <input name="22" class="celda" id="r1c1">
-                    <input name="23" class="celda" id="r1c2">
-                    <input name="24" class="celda" id="r1c3">
-                    <input name="25" class="celda" id="r1c4">
+                <fieldset id="row1">
+                    <input name="10" maxlength="1" class="celda" id="r1c0">
+                    <input name="11" maxlength="1" class="celda" id="r1c1">
+                    <input name="12" maxlength="1" class="celda" id="r1c2">
+                    <input name="13" maxlength="1" class="celda" id="r1c3">
+                    <input name="14" maxlength="1" class="celda" id="r1c4">
                 </fieldset>
-                <fieldset>
-                    <input name="31" class="celda" id="r2c0">
-                    <input name="32" class="celda" id="r2c1">
-                    <input name="33" class="celda" id="r2c2">
-                    <input name="34" class="celda" id="r2c3">
-                    <input name="35" class="celda" id="r2c4">
+                <fieldset id="row2">
+                    <input name="20" maxlength="1" class="celda" id="r2c0">
+                    <input name="21" maxlength="1" class="celda" id="r2c1">
+                    <input name="22" maxlength="1" class="celda" id="r2c2">
+                    <input name="23" maxlength="1" class="celda" id="r2c3">
+                    <input name="24" maxlength="1" class="celda" id="r2c4">
                 </fieldset>
-                <fieldset>
-                    <input name="41" class="celda" id="r3c0">
-                    <input name="42" class="celda" id="r3c1">
-                    <input name="43" class="celda" id="r3c2">
-                    <input name="44" class="celda" id="r3c3">
-                    <input name="45" class="celda" id="r3c4">
+                <fieldset id="row3">
+                    <input name="30" maxlength="1" class="celda" id="r3c0">
+                    <input name="31" maxlength="1" class="celda" id="r3c1">
+                    <input name="32" maxlength="1" class="celda" id="r3c2">
+                    <input name="33" maxlength="1" class="celda" id="r3c3">
+                    <input name="34" maxlength="1" class="celda" id="r3c4">
                 </fieldset>
-                <fieldset>
-                    <input name="51" class="celda" id="r4c0">
-                    <input name="52" class="celda" id="r4c1">
-                    <input name="53" class="celda" id="r4c2">
-                    <input name="54" class="celda" id="r4c3">
-                    <input name="55" class="celda" id="r4c4">
+                <fieldset id="row4">
+                    <input name="40" maxlength="1" class="celda" id="r4c0">
+                    <input name="41" maxlength="1" class="celda" id="r4c1">
+                    <input name="42" maxlength="1" class="celda" id="r4c2">
+                    <input name="43" maxlength="1" class="celda" id="r4c3">
+                    <input name="44" maxlength="1" class="celda" id="r4c4">
                 </fieldset>
-                <fieldset>
-                    <input name="61" class="celda" id="r5c0">
-                    <input name="62" class="celda" id="r5c1">
-                    <input name="63" class="celda" id="r5c2">
-                    <input name="64" class="celda" id="r5c3">
-                    <input name="65" class="celda" id="r5c4">
+                <fieldset id="row5">
+                    <input name="50" maxlength="1" class="celda" id="r5c0">
+                    <input name="51" maxlength="1" class="celda" id="r5c1">
+                    <input name="52" maxlength="1" class="celda" id="r5c2">
+                    <input name="53" maxlength="1" class="celda" id="r5c3">
+                    <input name="54" maxlength="1" class="celda" id="r5c4">
                 </fieldset>
+            </div>
+
+            <div id="keyboard-cont">
+                <div class="first-row">
+                    <button class="keyboard-button">q</button>
+                    <button class="keyboard-button">w</button>
+                    <button class="keyboard-button">e</button>
+                    <button class="keyboard-button">r</button>
+                    <button class="keyboard-button">t</button>
+                    <button class="keyboard-button">y</button>
+                    <button class="keyboard-button">u</button>
+                    <button class="keyboard-button">i</button>
+                    <button class="keyboard-button">o</button>
+                    <button class="keyboard-button">p</button>
+                </div>
+                <div class="second-row">
+                    <button class="keyboard-button">a</button>
+                    <button class="keyboard-button">s</button>
+                    <button class="keyboard-button">d</button>
+                    <button class="keyboard-button">f</button>
+                    <button class="keyboard-button">g</button>
+                    <button class="keyboard-button">h</button>
+                    <button class="keyboard-button">j</button>
+                    <button class="keyboard-button">k</button>
+                    <button class="keyboard-button">l</button>
+                </div>
+                <div class="third-row">
+                    <button class="keyboard-button">Del</button>
+                    <button class="keyboard-button">z</button>
+                    <button class="keyboard-button">x</button>
+                    <button class="keyboard-button">c</button>
+                    <button class="keyboard-button">v</button>
+                    <button class="keyboard-button">b</button>
+                    <button class="keyboard-button">n</button>
+                    <button class="keyboard-button">m</button>
+                    <button class="keyboard-button">Enter</button>
+                </div>
             </div>
         </main>
     </body>
