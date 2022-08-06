@@ -4,60 +4,62 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="/script.js"></script>
+        
         <link rel="stylesheet" href="/css/styles.css">
         <link rel="stylesheet" href="/css/wordle.css"
         <title>Wordle</title>
     </head>
     <body>
+        
         <header>
 
         </header>
 
         <main>
+            <div id="game-board"></div>
             <div id="board">
-                <fieldset id="row0">
-                    <input name="00" maxlength="1" class="celda" id="r0c0">
-                    <input name="01" maxlength="1" class="celda" id="r0c1">
-                    <input name="02" maxlength="1" class="celda" id="r0c2">
-                    <input name="03" maxlength="1" class="celda" id="r0c3">
-                    <input name="04" maxlength="1" class="celda" id="r0c4">
-                </fieldset>
-                <fieldset id="row1">
-                    <input name="10" maxlength="1" class="celda" id="r1c0">
-                    <input name="11" maxlength="1" class="celda" id="r1c1">
-                    <input name="12" maxlength="1" class="celda" id="r1c2">
-                    <input name="13" maxlength="1" class="celda" id="r1c3">
-                    <input name="14" maxlength="1" class="celda" id="r1c4">
-                </fieldset>
-                <fieldset id="row2">
-                    <input name="20" maxlength="1" class="celda" id="r2c0">
-                    <input name="21" maxlength="1" class="celda" id="r2c1">
-                    <input name="22" maxlength="1" class="celda" id="r2c2">
-                    <input name="23" maxlength="1" class="celda" id="r2c3">
-                    <input name="24" maxlength="1" class="celda" id="r2c4">
-                </fieldset>
-                <fieldset id="row3">
-                    <input name="30" maxlength="1" class="celda" id="r3c0">
-                    <input name="31" maxlength="1" class="celda" id="r3c1">
-                    <input name="32" maxlength="1" class="celda" id="r3c2">
-                    <input name="33" maxlength="1" class="celda" id="r3c3">
-                    <input name="34" maxlength="1" class="celda" id="r3c4">
-                </fieldset>
-                <fieldset id="row4">
-                    <input name="40" maxlength="1" class="celda" id="r4c0">
-                    <input name="41" maxlength="1" class="celda" id="r4c1">
-                    <input name="42" maxlength="1" class="celda" id="r4c2">
-                    <input name="43" maxlength="1" class="celda" id="r4c3">
-                    <input name="44" maxlength="1" class="celda" id="r4c4">
-                </fieldset>
-                <fieldset id="row5">
-                    <input name="50" maxlength="1" class="celda" id="r5c0">
-                    <input name="51" maxlength="1" class="celda" id="r5c1">
-                    <input name="52" maxlength="1" class="celda" id="r5c2">
-                    <input name="53" maxlength="1" class="celda" id="r5c3">
-                    <input name="54" maxlength="1" class="celda" id="r5c4">
-                </fieldset>
+                <div class="letter-row">
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                </div>
+                <div class="letter-row">
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                </div>
+                <div class="letter-row">
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                </div>
+                <div class="letter-row">
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                </div>
+                <div class="letter-row">
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                </div>
+                <div class="letter-row">
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                    <div class="letter-box"></div>
+                </div>
             </div>
 
             <div id="keyboard-cont">
@@ -83,6 +85,7 @@
                     <button class="keyboard-button">j</button>
                     <button class="keyboard-button">k</button>
                     <button class="keyboard-button">l</button>
+                    <button class="keyboard-button">ñ</button>
                 </div>
                 <div class="third-row">
                     <button class="keyboard-button">Del</button>
@@ -97,5 +100,6 @@
                 </div>
             </div>
         </main>
+        <script type="module" src="/scripts/wordle.js"></script>
     </body>
 </html>
