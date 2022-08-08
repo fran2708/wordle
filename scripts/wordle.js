@@ -1,13 +1,33 @@
 import { WORDS } from "./palabras.js";
 
-
+let user = sessionStorage.user
 const NUMBER_OF_GUESSES = 6
 let guessesRemaining = NUMBER_OF_GUESSES
 let currentGuess = []
 let nextLetter = 0
 let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)]
+let guessesMatrix = [
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""]
+]
+let colorMatrix = [
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""]
+]
+let savedRightGuessString = "";
 console.log(rightGuessString)
 
+window.onload = () => {
+    
+}
 
 /**
  * 
@@ -52,6 +72,7 @@ function insertLetter (pressedKey) {
     box.textContent = pressedKey
     box.classList.add("filled-box")
     currentGuess.push(pressedKey)
+    guessesMatrix[6 - guessesRemaining][nextLetter] = pressedKey
     nextLetter += 1
 }
 
@@ -64,6 +85,7 @@ function deleteLetter () {
     box.textContent = ""
     box.classList.remove("filled-box")
     currentGuess.pop()
+    guessesMatrix[6 - guessesRemaining][nextLetter] = ""
     nextLetter -= 1
 }
 
@@ -72,6 +94,7 @@ function deleteLetter () {
  * @returns 
  */
 function checkGuess () {
+    console.log(user)
     let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
     let guessString = ''
     let rightGuess = Array.from(rightGuessString)
@@ -100,16 +123,19 @@ function checkGuess () {
         // is letter in the correct guess
         if (letterPosition === -1) {
             letterColor = 'grey'
+            colorMatrix[6 - guessesRemaining][i] = 'grey'
         } else {
-            // now, letter is definitely in word
+            // letter is in word
             // if letter index and right guess index are the same
             // letter is in the right position 
             if (currentGuess[i] === rightGuess[i]) {
                 // shade green 
                 letterColor = 'green'
+                colorMatrix[6 - guessesRemaining][i] = 'green'
             } else {
                 // shade box yellow
                 letterColor = 'yellow'
+                colorMatrix[6 - guessesRemaining][i] = 'yellow'
             }
 
             rightGuess[letterPosition] = "#"
@@ -177,3 +203,20 @@ function shadeKeyBoard(letter, color) {
         }
     }
 }
+
+window.onbeforeunload = () => {
+    saveGameState()
+}
+
+function saveGameState() {
+    let file = {
+        user: user,
+        guessesRemaining: guessesRemaining,
+        rightGuessString: rightGuessString,
+        guessesMatrix: guessesMatrix,
+        colorMatrix: colorMatrix
+    }
+    let saveStateString = JSON.stringify(file)
+    localStorage.setItem(`saveGame${user}`, saveStateString)
+}
+

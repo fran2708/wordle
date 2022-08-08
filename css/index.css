@@ -75,3 +75,7 @@ form{
     margin-top: 8px;
     margin-bottom: 20px;
 }
+
+.hidden{
+    display: none;
+}
