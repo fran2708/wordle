@@ -14,19 +14,25 @@ let guessesMatrix = [
     ["", "", "", "", ""],
     ["", "", "", "", ""]
 ]
-let colorMatrix = [
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""]
-]
 let savedRightGuessString = "";
 console.log(rightGuessString)
 
 window.onload = () => {
+    //if it's not a new game, load tha save state from local storage
+    if (sessionStorage.getItem("isNew") === "false") {
+        var loadFile = JSON.parse(localStorage.getItem(`saveGame${user}`))
+        let savedGuessesRemaining = loadFile.guessesRemaining
+        rightGuessString = loadFile.rightGuessString
+        guessesMatrix = loadFile.guessesMatrix
     
+        for (let row = 0; row < 6 - savedGuessesRemaining; row++) {
+            for (let box = 0; box < 5; box++) {
+                insertLetter(guessesMatrix[row][box])
+            }
+            checkGuess()
+        }
+    }
+    console.log(rightGuessString)
 }
 
 /**
@@ -59,7 +65,7 @@ document.addEventListener("keyup", (e) => {
 
 /**
  * inserts letter on correct cell after key press
- * @param {*} pressedKey 
+ * @param {string} pressedKey 
  */
 function insertLetter (pressedKey) {
     if (nextLetter === 5) {
@@ -94,7 +100,6 @@ function deleteLetter () {
  * @returns 
  */
 function checkGuess () {
-    console.log(user)
     let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
     let guessString = ''
     let rightGuess = Array.from(rightGuessString)
@@ -123,7 +128,6 @@ function checkGuess () {
         // is letter in the correct guess
         if (letterPosition === -1) {
             letterColor = 'grey'
-            colorMatrix[6 - guessesRemaining][i] = 'grey'
         } else {
             // letter is in word
             // if letter index and right guess index are the same
@@ -131,11 +135,9 @@ function checkGuess () {
             if (currentGuess[i] === rightGuess[i]) {
                 // shade green 
                 letterColor = 'green'
-                colorMatrix[6 - guessesRemaining][i] = 'green'
             } else {
                 // shade box yellow
                 letterColor = 'yellow'
-                colorMatrix[6 - guessesRemaining][i] = 'yellow'
             }
 
             rightGuess[letterPosition] = "#"
@@ -213,8 +215,7 @@ function saveGameState() {
         user: user,
         guessesRemaining: guessesRemaining,
         rightGuessString: rightGuessString,
-        guessesMatrix: guessesMatrix,
-        colorMatrix: colorMatrix
+        guessesMatrix: guessesMatrix
     }
     let saveStateString = JSON.stringify(file)
     localStorage.setItem(`saveGame${user}`, saveStateString)
