@@ -17,5 +17,19 @@
                 <a href="/html/scores.html">Puntajes</a>
             </nav>
         </header>
+
+        <div class="form-container">
+            <form class="form-user">
+                <h2 class="form-title">Ingrese un usuario para jugar</h2>
+                <fieldset class="group-form">
+                    <input class="form-txt" id="txt-user" placeholder=" ">
+                    <label class="form-lbl" id="lbl-user" for="txt-user">Jugador</label>
+                </fieldset>
+                <input type="button" class="form-button" value="Nueva partida" id="btn-new">
+                <input type="button" class="form-button" value="Cargar partida" id="btn-load">
+                <label class="form-txt-error hidden" id="error-new">Ese usuario ya tiene partida</label>
+                <label class="form-txt-error hidden" id="error-load">No hay partida para ese usuario</label>
+            </form>
+        </div>
     </body>
 </html>

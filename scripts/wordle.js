@@ -14,7 +14,6 @@ console.log(rightGuessString)
  * listener event for key press
  */
 document.addEventListener("keyup", (e) => {
-    console.log("key")
     if (guessesRemaining === 0) {
         return
     }
@@ -50,7 +49,6 @@ function insertLetter (pressedKey) {
 
     let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
     let box = row.children[nextLetter]
-    console.log("row")
     box.textContent = pressedKey
     box.classList.add("filled-box")
     currentGuess.push(pressedKey)
@@ -155,3 +153,27 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
 
     document.dispatchEvent(new KeyboardEvent("keyup", {'key': key}))
 })
+
+/**
+ * 
+ * @param {*} letter 
+ * @param {*} color 
+ * colors the on screen keyboard
+ */
+function shadeKeyBoard(letter, color) {
+    for (const elem of document.getElementsByClassName("keyboard-button")) {
+        if (elem.textContent === letter) {
+            let oldColor = elem.style.backgroundColor
+            if (oldColor === 'green') {
+                return
+            } 
+
+            if (oldColor === 'yellow' && color !== 'green') {
+                return
+            }
+
+            elem.style.backgroundColor = color
+            break
+        }
+    }
+}

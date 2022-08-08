@@ -4,7 +4,7 @@
     flex-direction: column;
 }
 
-fieldset{
+/* fieldset{
     margin: 5px;
     border-color: transparent;
 }
@@ -17,9 +17,10 @@ fieldset input{
     text-transform: uppercase;
     color: transparent;
     text-shadow: 0 0 0 black;
-}
+} */
 
 .letter-box {
+    background-color: white;
     border: 2px solid gray;
     border-radius: 3px;
     margin: 2px;
