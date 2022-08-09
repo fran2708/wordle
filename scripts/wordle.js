@@ -1,9 +1,11 @@
 import { WORDS } from "./palabras.js";
 
+//redirects user to index if they arrive without set user
 if (sessionStorage.user == null) {
     location.href = "/index.html"
 }
 
+//creates needed variables
 const alertContainer = document.querySelector("[data-alert-container]")
 let user = sessionStorage.user
 let ID = 0
@@ -26,8 +28,6 @@ var elemStopwatch = document.getElementById("stopwatch")
 var stopwatch
 var mins
 var secs
-
-console.log(rightGuessString)
 
 window.onload = () => {
     startTimer(0,0)
@@ -148,19 +148,20 @@ function checkGuess () {
         let letterPosition = rightGuess.indexOf(currentGuess[i])
         // is letter in the correct guess
         if (letterPosition === -1) {
+            //shade box grey
             letterColor = 'grey'
         } else {
-            // letter is in word
-            // if letter index and right guess index are the same
-            // letter is in the right position 
+            //letter is in word
+            //if letter index and right guess index are the same
+            //letter is in the right position 
             if (currentGuess[i] === rightGuess[i]) {
-                // shade green 
+                //shade green 
                 letterColor = 'green'
             } else {
-                // shade box yellow
+                //shade box yellow
                 letterColor = 'yellow'
             }
-
+            //change that letter in the variable so that other letters in the word and in the wrong position dont get shaded yellow
             rightGuess[letterPosition] = "#"
         }
 
@@ -175,6 +176,7 @@ function checkGuess () {
     if (guessString === rightGuessString) {
         showAlert("Acertaste la palabra! Podras ver tu puntaje en la tabla de ganadores", 5000)
         
+        //sets variable to be saved on finishedGames
         numberOfAttempts = 6 - (guessesRemaining - 1)
         saveFinishedGame()
         stopTimer()
@@ -234,10 +236,6 @@ function shadeKeyBoard(letter, color) {
         }
     }
 }
-
-// window.onbeforeunload = () => {
-//     saveGameState()
-// }
 
 /**
  * saves current game state
@@ -302,6 +300,11 @@ function saveFinishedGame() {
     localStorage.removeItem(`saveGame${user}`)
 }
 
+/**
+ * sets and starts the timer
+ * @param {int} m minutes
+ * @param {int} s seconds
+ */
 function startTimer(m,s){
     stopwatch = setInterval(function(){
         if (s >= 60) {
@@ -315,6 +318,7 @@ function startTimer(m,s){
     },1000)
 }
 
+//stops the timer
 function stopTimer() {
     clearInterval(stopwatch)
 }

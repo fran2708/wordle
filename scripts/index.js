@@ -11,6 +11,7 @@ window.onload = () => {
     getElements()
     hideLabels()
 
+    //when "new" button is clicked, check for saved games with that name, and set user in sessionStorage
     btnNew.onclick = (e) => {
         hideLabels()
         let currentUser = user.value
@@ -27,6 +28,7 @@ window.onload = () => {
         }
     }
 
+    //when "load" button is clicked, check for saved games and set user
     btnLoad.onclick = (e) => {
         hideLabels()
         let currentUser = user.value

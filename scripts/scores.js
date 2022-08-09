@@ -10,11 +10,11 @@ function getElements() {
 
 window.onload = () => {
     getElements()
-    
-    // fillTable(finishedGames)
+
     setTimeout(fillTable, 500)
 }
 
+//creates and fills table with information from localStorage
 function fillTable() {
     if (finishedGames == null) {
         title.classList.toggle("hidden",false)

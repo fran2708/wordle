@@ -13,6 +13,7 @@ window.onload = () => {
     getElements()
     hideLabels()
 
+    //when button is clicked, new tab is opened to send email with fields already completed
     btnSubmit.onclick = (e) => {
         e.preventDefault()
         if (validateFields()) {
@@ -23,6 +24,7 @@ window.onload = () => {
     }
 }
 
+//validate fields before going to send email, and show errors when necessary
 function validateFields() {
     var validate = true
     if (!userName.value || !email.value || !message.value ){
@@ -49,6 +51,7 @@ function validateFields() {
     return validate
 }
 
+//hide labels when focus is put on that specific field
 function hideLabels() {
     userName.onfocus = () => {
         lblErrorName.classList.toggle("hidden",true)
