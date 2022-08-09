@@ -2,9 +2,9 @@
 Final de LPPA, en el cual se debera realizar una copia del juego "Wordle"
 
 ## Construido cont
-*HTML
-*CSS
-*JavaScript
+* HTML
+* CSS
+* JavaScript
 
 # Criterios para aprobar
 - Código prolijo.
