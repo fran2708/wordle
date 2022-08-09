@@ -1,6 +1,12 @@
 import { WORDS } from "./palabras.js";
 
+if (sessionStorage.user == null) {
+    location.href = "/index.html"
+}
+
+const alertContainer = document.querySelector("[data-alert-container]")
 let user = sessionStorage.user
+let ID = 0
 const NUMBER_OF_GUESSES = 6
 let guessesRemaining = NUMBER_OF_GUESSES
 let currentGuess = []
@@ -97,7 +103,6 @@ function deleteLetter () {
 
 /**
  * checkGuess checks after Enter is pressed
- * @returns 
  */
 function checkGuess () {
     let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
@@ -109,12 +114,12 @@ function checkGuess () {
     }
 
     if (guessString.length != 5) {
-        alert("Not enough letters!")
+        showAlert("Cantidad de letras insuficiente")
         return
     }
 
     if (!WORDS.includes(guessString)) {
-        alert("Word not in list!")
+        showAlert("Esa palabra no esta en la lista")
         return
     }
 
@@ -152,8 +157,10 @@ function checkGuess () {
     }
 
     if (guessString === rightGuessString) {
-        alert("You guessed right! Game over!")
+        showAlert("Acertaste la palabra! Tu tiempo fue de ")
+
         guessesRemaining = 0
+
         return
     } else {
         guessesRemaining -= 1;
@@ -161,12 +168,14 @@ function checkGuess () {
         nextLetter = 0;
 
         if (guessesRemaining === 0) {
-            alert("You've run out of guesses! Game over!")
-            alert(`The right word was: "${rightGuessString}"`)
+            showAlert(`Te quedaste sin intentos! La palabra era "${rightGuessString}"`)
         }
     }
 }
 
+/** 
+ * this function makes the virtual keyboard usable
+ */
 document.getElementById("keyboard-cont").addEventListener("click", (e) => {
     const target = e.target
     
@@ -210,6 +219,9 @@ window.onbeforeunload = () => {
     saveGameState()
 }
 
+/**
+ * saves current game state
+ */
 function saveGameState() {
     let file = {
         user: user,
@@ -221,3 +233,51 @@ function saveGameState() {
     localStorage.setItem(`saveGame${user}`, saveStateString)
 }
 
+/**
+ * 
+ * @param {string} message 
+ * @param {int} duration 
+ * @returns an alert message on screen
+ */
+function showAlert(message, duration = 1000) {
+    const alert = document.createElement("div");
+    alert.textContent = message;
+    alert.classList.add("alert");
+    alertContainer.prepend(alert);
+    if (!duration) return;
+    setTimeout(() => {
+      alert.classList.add("hide");
+      alert.addEventListener("transitionend", () => {
+        alert.remove();
+      });
+    }, duration);
+  }
+
+  /**
+   * saves the finished game and also clears the current game from local storage
+   */
+function saveFinishedGame() {
+    let currentDate = new Date()
+    let finished = {
+        user: user,
+        rightGuessString: rightGuessString,
+        date: currentDate
+    }
+}
+
+// function startTimer(m,s){
+//     var timer = setInterval(function(){
+//         if (s >= 60) {
+//             s = 0;
+//             m++;
+//         }        
+//         oTimer.innerHTML = `Tu tiempo es ${m.toString().padStart(2,"0")}:${s.toString().padStart(2,"0")}`;
+//         var mins = m;
+//         var segs = s;
+//         s++;
+//     },1000)
+// }
+
+// function stopTimer() {
+//     clearInterval(timer)
+// }
