@@ -18,7 +18,7 @@ window.onload = () => {
             if (localStorage.getItem(`saveGame${currentUser}`) === null) {
                 sessionStorage.setItem("user", user.value)
                 sessionStorage.setItem("isNew", true)
-                location.href = '/html/game.html'
+                location.href = '../html/game.html'
             } else {
                 lblErrorNew.classList.toggle("hidden",false)
             }
@@ -34,7 +34,7 @@ window.onload = () => {
             if ((`saveGame${currentUser}` in localStorage)) {
                 sessionStorage.setItem("user", user.value)
                 sessionStorage.setItem("isNew", "false")
-                location.href = '/html/game.html'
+                location.href = '../html/game.html'
             } else {
                 lblErrorLoad.classList.toggle("hidden",false)
             }

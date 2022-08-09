@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 /* fieldset{
@@ -96,3 +97,17 @@ fieldset input{
   .alert.hide {
     opacity: 0;
   }
+
+  .save-button{
+    width: 15%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    padding: 12px 0px;
+    border: 1px solid;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color .3s;
+    margin-top: 8px;
+    margin-bottom: 20px;
+}

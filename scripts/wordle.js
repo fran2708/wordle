@@ -22,10 +22,11 @@ let guessesMatrix = [
 ]
 let savedRightGuessString = "";
 var numberOfAttempts
+
 console.log(rightGuessString)
 
 window.onload = () => {
-    //if it's not a new game, load tha save state from local storage
+    //if it's not a new game, load the save state from local storage
     if (sessionStorage.getItem("isNew") === "false") {
         var loadFile = JSON.parse(localStorage.getItem(`saveGame${user}`))
         let savedGuessesRemaining = loadFile.guessesRemaining
@@ -40,6 +41,12 @@ window.onload = () => {
         }
     }
     console.log(rightGuessString)
+
+    var btnSave = document.getElementById("btn-save")
+    btnSave.onclick = (e) => {
+        saveGameState()
+        sessionStorage.isNew = "false"
+    }
 }
 
 /**
@@ -219,9 +226,9 @@ function shadeKeyBoard(letter, color) {
     }
 }
 
-window.onbeforeunload = () => {
-    saveGameState()
-}
+// window.onbeforeunload = () => {
+//     saveGameState()
+// }
 
 /**
  * saves current game state
