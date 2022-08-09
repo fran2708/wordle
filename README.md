@@ -1,7 +1,7 @@
 # Acerca del proyecto
 Final de LPPA, en el cual se debera realizar una copia del juego "Wordle"
 
-## Construido cont
+## Construido con
 * HTML
 * CSS
 * JavaScript
