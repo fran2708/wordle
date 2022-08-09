@@ -161,6 +161,8 @@ function checkGuess () {
 
         guessesRemaining = 0
 
+        saveFinishedGame()
+
         return
     } else {
         guessesRemaining -= 1;
@@ -261,8 +263,20 @@ function saveFinishedGame() {
     let finished = {
         user: user,
         rightGuessString: rightGuessString,
-        date: currentDate
+        date: currentDate,
+        guessesMatrix: guessesMatrix,
+        guessesRemaining: guessesRemaining
     }
+    if (localStorage.finishedGames == null) {
+        var finishedGames = []
+    } else {
+        var finishedGames = JSON.parse(localStorage.finishedGames)
+    }
+
+    finishedGames.push(finished)
+    localStorage.finishedGames = JSON.stringify(finishedGames)
+
+    localStorage.removeItem(`saveGame${user}`)
 }
 
 // function startTimer(m,s){

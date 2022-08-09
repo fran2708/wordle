@@ -4,7 +4,7 @@ function getElements() {
     message = document.getElementById("txt-message")
     btnSubmit = document.getElementById("btn-submit")
     lblErrorName = document.getElementById("error-name")
-    lblErrorMail = document.getElementById("error-mail")
+    lblErrorMail = document.getElementById("error-email")
     lblErrorMessage = document.getElementById("error-message")
     lblErrorLogin = document.getElementById("error-login")
 }
