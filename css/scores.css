@@ -11,7 +11,7 @@ h2{
     background-color: grey;
     padding: 20px;
     border-radius: 15px;
-    color:var(--negro);
+    color:black;
     text-decoration-line:underline;
     font-size: 35px;
     font-weight: 700;
@@ -21,7 +21,7 @@ h2{
 
 table{
     text-align: left;
-    background-color: var(--blanco);
+    background-color: rgba(211, 211, 211, 0.959);
     border-collapse: collapse;
     width: 100%;
     margin-top: 20px;
@@ -29,22 +29,22 @@ table{
 
 th,td{
     padding: 10px;
-    border: solid 1px var(--negro);
+    border: solid 1px black;
 }
 
 thead{
     font-weight: 700;
-    background-color: var(--celeste);
-    border-bottom: solid 5px var(--negro);
-    color:var(--blanco);
+    background-color: black;
+    border-bottom: solid 5px black;
+    color:white;
 }
 
 tr:nth-child(even){
-    background-color: var(--gris);
+    background-color: rgb(185, 184, 184);
 }
 
 tr:hover td{
-    background-color: var(--blanco);
+    background-color: white;
     color:var(--celesteClaro);
     cursor:pointer;
 }
