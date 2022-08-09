@@ -4,18 +4,27 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/reset.css">
-        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="../css/reset.css">
+        <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="../css/scores.css">
+        <script src="../scripts/scores.js"></script>
         <title>Document</title>
     </head>
     <body>
         <header>
             <nav class="navbar">
-                <a href="/index.html">Inicio</a>
-                <a href="/html/contact.html">Contacto</a>
-                <a href="/html/scores.html">Puntajes</a>
+                <a href="../index.html">Inicio</a>
+                <a href="../html/contact.html">Contacto</a>
+                <a href="../html/scores.html">Puntajes</a>
             </nav>
         </header>
-
+        <h2 class="hidden" id="title"></h2>
+        <div class="table-container">
+            <p class="hidden" id="loading-text">Obteniendo datos...</p>
+            <table id="table">
+                <thead id="encabezado"></thead>
+                <tbody id="contenido"></tbody>
+            </table>
+        </div>
     </body>
 </html>

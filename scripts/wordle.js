@@ -21,6 +21,7 @@ let guessesMatrix = [
     ["", "", "", "", ""]
 ]
 let savedRightGuessString = "";
+var numberOfAttempts
 console.log(rightGuessString)
 
 window.onload = () => {
@@ -158,10 +159,11 @@ function checkGuess () {
 
     if (guessString === rightGuessString) {
         showAlert("Acertaste la palabra! Tu tiempo fue de ")
+        
+        numberOfAttempts = 6 - (guessesRemaining - 1)
+        saveFinishedGame()
 
         guessesRemaining = 0
-
-        saveFinishedGame()
 
         return
     } else {
@@ -265,7 +267,7 @@ function saveFinishedGame() {
         rightGuessString: rightGuessString,
         date: currentDate,
         guessesMatrix: guessesMatrix,
-        guessesRemaining: guessesRemaining
+        numberOfAttempts: numberOfAttempts
     }
     if (localStorage.finishedGames == null) {
         var finishedGames = []
