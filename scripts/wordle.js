@@ -173,10 +173,11 @@ function checkGuess () {
     }
 
     if (guessString === rightGuessString) {
-        showAlert("Acertaste la palabra! Tu tiempo fue de ")
+        showAlert("Acertaste la palabra! Podras ver tu puntaje en la tabla de ganadores", 5000)
         
         numberOfAttempts = 6 - (guessesRemaining - 1)
         saveFinishedGame()
+        stopTimer()
 
         guessesRemaining = 0
 
@@ -307,7 +308,7 @@ function startTimer(m,s){
             s = 0;
             m++;
         }        
-        elemStopwatch.innerHTML = `Tu tiempo es ${m.toString().padStart(2,"0")}:${s.toString().padStart(2,"0")}`;
+        elemStopwatch.innerHTML = `Timer: ${m.toString().padStart(2,"0")}:${s.toString().padStart(2,"0")}`;
         mins = m;
         secs = s;
         s++;
