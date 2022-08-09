@@ -26,13 +26,15 @@ function fillTable() {
     <tr><th>Nombre</th>
     <th>Palabra</th>
     <th>Fecha</th>
+    <th>Tiempo</th>
     <th>Cantidad de intentos</th></tr>`;
     let body = "";
     for (let i = 0; i < finishedGames.length; i++) {
         body += `
         <tr><td>${finishedGames[i].user}</td>
         <td>${finishedGames[i].rightGuessString.toUpperCase()}</td>
-        <td>${finishedGames[i].date}</td>
+        <td>${finishedGames[i].hour}</td>
+        <td>${finishedGames[i].mins.toString().padStart(2,"0")}:${finishedGames[i].secs.toString().padStart(2,"0")}</td>
         <td>${finishedGames[i].numberOfAttempts}</td></tr>`;
     }
     document.getElementById("encabezado").innerHTML = head;

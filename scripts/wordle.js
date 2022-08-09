@@ -22,16 +22,24 @@ let guessesMatrix = [
 ]
 let savedRightGuessString = "";
 var numberOfAttempts
+var elemStopwatch = document.getElementById("stopwatch")
+var stopwatch
+var mins
+var secs
 
 console.log(rightGuessString)
 
 window.onload = () => {
+    startTimer(0,0)
     //if it's not a new game, load the save state from local storage
     if (sessionStorage.getItem("isNew") === "false") {
         var loadFile = JSON.parse(localStorage.getItem(`saveGame${user}`))
         let savedGuessesRemaining = loadFile.guessesRemaining
         rightGuessString = loadFile.rightGuessString
         guessesMatrix = loadFile.guessesMatrix
+        mins = loadFile.mins
+        secs = loadFile.secs
+        startTimer(mins,secs)
     
         for (let row = 0; row < 6 - savedGuessesRemaining; row++) {
             for (let box = 0; box < 5; box++) {
@@ -238,7 +246,9 @@ function saveGameState() {
         user: user,
         guessesRemaining: guessesRemaining,
         rightGuessString: rightGuessString,
-        guessesMatrix: guessesMatrix
+        guessesMatrix: guessesMatrix,
+        mins: mins,
+        secs: secs
     }
     let saveStateString = JSON.stringify(file)
     localStorage.setItem(`saveGame${user}`, saveStateString)
@@ -272,9 +282,12 @@ function saveFinishedGame() {
     let finished = {
         user: user,
         rightGuessString: rightGuessString,
-        date: currentDate,
+        date: currentDate.toLocaleDateString(),
+        hour: currentDate.toLocaleDateString([], { hour: '2-digit', minute: '2-digit' }),
         guessesMatrix: guessesMatrix,
-        numberOfAttempts: numberOfAttempts
+        numberOfAttempts: numberOfAttempts,
+        mins: mins,
+        secs: secs
     }
     if (localStorage.finishedGames == null) {
         var finishedGames = []
@@ -288,19 +301,19 @@ function saveFinishedGame() {
     localStorage.removeItem(`saveGame${user}`)
 }
 
-// function startTimer(m,s){
-//     var timer = setInterval(function(){
-//         if (s >= 60) {
-//             s = 0;
-//             m++;
-//         }        
-//         oTimer.innerHTML = `Tu tiempo es ${m.toString().padStart(2,"0")}:${s.toString().padStart(2,"0")}`;
-//         var mins = m;
-//         var segs = s;
-//         s++;
-//     },1000)
-// }
+function startTimer(m,s){
+    stopwatch = setInterval(function(){
+        if (s >= 60) {
+            s = 0;
+            m++;
+        }        
+        elemStopwatch.innerHTML = `Tu tiempo es ${m.toString().padStart(2,"0")}:${s.toString().padStart(2,"0")}`;
+        mins = m;
+        secs = s;
+        s++;
+    },1000)
+}
 
-// function stopTimer() {
-//     clearInterval(timer)
-// }
+function stopTimer() {
+    clearInterval(stopwatch)
+}
