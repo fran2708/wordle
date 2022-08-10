@@ -190,7 +190,10 @@ function checkGuess () {
         nextLetter = 0;
 
         if (guessesRemaining === 0) {
-            showAlert(`Te quedaste sin intentos! La palabra era "${rightGuessString}"`)
+            showAlert(`Te quedaste sin intentos! La palabra era "${rightGuessString}"`, 8000)
+            if  (localStorage.getItem(`saveGame${user}`) !== null) {
+                localStorage.removeItem(`saveGame${user}`)
+            }
         }
     }
 }
