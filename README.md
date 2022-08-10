@@ -1,5 +1,10 @@
-# wordle
+# Acerca del proyecto
 Final de LPPA, en el cual se debera realizar una copia del juego "Wordle"
+
+## Construido con
+* HTML
+* CSS
+* JavaScript
 
 # Criterios para aprobar
 - Código prolijo.
